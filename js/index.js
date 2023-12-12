@@ -64,7 +64,7 @@ async function getMovie(title) {
             ${JSON.stringify("watched: " + movie.movie.watchedMovievalue)},
             ${JSON.stringify(movie.movie.releaseDate)}</p>`;
         }).join('');
-    
+
     } catch (error) {
         console.log(`ERROR: ${error}`);
     }
@@ -141,9 +141,9 @@ function createMovieElement(movie, watchedMovievalue) {
 
 getMovieButton.addEventListener('click', async () => {
     const title = document.querySelector('#username').value;
-       clearPreviousSearch();
-        const movies = await getMovie(title);
-        //displayedMovies.add(title);
+    clearPreviousSearch();
+    const movies = await getMovie(title);
+    //displayedMovies.add(title);
     document.querySelector('#username').value = "";
 
 });
@@ -165,21 +165,37 @@ getAllMoviesButton.addEventListener('click', async () => {
     ;
 });
 
-
 postMovieButton.addEventListener('click', async () => {
     moviesContainer.innerHTML = "";
-    const movie = {
-        title: document.querySelector('#usernamePost').value,
-        genre: document.querySelector('#title').value,
-        releaseDate: document.querySelector('#selectedDate').value,
-        watchedMovievalue: false,
-        createdAt: new Date().toLocaleDateString()
-    };
 
-    await postMovie(movie);
+    const movieTitle = document.querySelector('#usernamePost').value;
+    const existingMovie = await checkIfMovieExists(movieTitle);
 
-    document.querySelector('#usernamePost').value = '';
-    document.querySelector('#title').value = '';
-    document.querySelector('#selectedDate').value = '';
+    if (!existingMovie) {
+        const movie = {
+            title: movieTitle,
+            genre: document.querySelector('#title').value,
+            releaseDate: document.querySelector('#selectedDate').value,
+            watchedMovievalue: false,
+            createdAt: new Date().toLocaleDateString()
+        };
+        await postMovie(movie);
+        document.querySelector('#usernamePost').value = '';
+        document.querySelector('#title').value = '';
+        document.querySelector('#selectedDate').value = '';
+    } else {
+        console.log(`Movie with title '${movieTitle}' already exists in the database.`);
+    }
 });
+
+
+async function checkIfMovieExists(title) {
+    try {
+        const queryName = query(collection(db, 'movies'), where('title', '==', title));
+        const movies = await getDocs(queryName);
+        return !movies.empty;
+    } catch (error) {
+        console.log(`ERROR: ${error}`);
+    }
+}
 
