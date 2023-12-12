@@ -137,14 +137,13 @@ function createMovieElement(movie, watchedMovievalue) {
     });
 }
 
-const displayedMovies = new Set();
+//const displayedMovies = new Set();
 
 getMovieButton.addEventListener('click', async () => {
     const title = document.querySelector('#username').value;
        clearPreviousSearch();
         const movies = await getMovie(title);
-        console.log(movies);
-        displayedMovies.add(title);
+        //displayedMovies.add(title);
     document.querySelector('#username').value = "";
 
 });
