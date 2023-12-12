@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans|Frank+Ruhl+Libre&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <link rel="stylesheet" href="style/index.css">
+</head>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DE-VE-DE Movie Tracker</title>
+</head>
+
+<body>
+    <header class="de-va-de-header">
+        <h2 class="logo animate__animated animate__flip ">
+            Welcome to DE-VE -DE <i class="fa-solid fa-cake-candles"></i>
+        </h2>
+        <p class="de-va-de-description">Discover and manage your movies with ease!</p>
+    </header>
+    <div class="wrapper">
+        <section class="search-bar">
+            <h1 class="welcome__heading">Search for a Movie</h1>
+            <input type="text" id="username">
+            <button type="button" id="getMovieButton">Search</button>
+            <section id="movie-notes"></section>
+        </section>
+
+        <aside>
+            <section class="movie-form">
+                <h1 class="welcome__heading">Add a Movie</h1>
+                <form id="movieForm">
+                    <label for="title">Title:</label>
+                    <input type="text" id="usernamePost" required>
+
+                    <label for="genre">Genre:</label>
+                    <input type="text" id="title" required>
+
+                    <label for="releaseDate">Release Date:</label>
+                    <input type="date" id="selectedDate" required>
+                    <div class="button-element">
+                        <button type="button" id="postMoviesButton">Add Movie</button>
+                        <button type="button" id="getAllMoviesButton">Get All Movie</button>
+                    </div>
+                    <div id="moviesContainer"></div>
+
+                </form>
+            </section>
+        </aside>
+    </div>
+
+
+    <!-- 
+        <section class="movie-list">
+            <h1 class="welcome__heading">All Movies</h1>
+            <ul id="movieList"></ul>
+        </section> -->
+    <!-- <section>
+        <label>Movie Name</label>
+        <input type="text" id="username" />
+        <button id="getMovieButton">Get the movie</button>
+        <section id="movie-notes"></section>
+    </section>
+    <section>
+        <h2>Lägg till en ny anteckning</h2>
+        <label>Movie Name</label>
+        <input type="text" id="usernamePost" />
+        <label>Genre</label>
+        <input type="text" id="title" />
+        <label>Relase date</label>
+        <input type="date" id="selectedDate" />
+        <button id="postMoviesButton">Lägg till anteckning</button>
+        <h3 id="confirmation"></h3>
+    </section>
+     -->
+    </section>
+    <script type="module" src="js/index.js"></script>
+</body>
+
+</html>

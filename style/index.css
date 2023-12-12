@@ -1,0 +1,85 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('/images/henry-co-21HT36zwLn8-unsplash.jpg');
+    /* Replace 'dvd-background.jpg' with the path to your DVD image */
+    background-size: cover;
+}
+
+.wrapper {
+    margin: 20px auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    background-color: rgba(255, 239, 239, 0.568);
+    /* Semi-transparent white background */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    justify-content: space-between;
+    height: 400px;
+    max-width: 1000px;
+}
+
+.movie-form,
+.movie-list,
+.favorites,
+.search-bar {
+    background-color: rgb(255 255 255 / 20%);
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    width: 300px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 8px;
+}
+
+input {
+    padding: 8px;
+    margin-bottom: 16px;
+}
+
+button {
+    padding: 10px;
+    background-color: #a5714d;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+.favorites,
+.search-bar {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px;
+}
+
+.button-element {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.de-va-de-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+header {
+    height: 15vh;
+    margin: 0;
+    align-content: center;
+    display: flex;
+    width: 100%;
+}
