@@ -56,9 +56,9 @@ async function getMovie(title) {
 
         movieNotes.innerHTML = formatedMovies.map((movie) => {
             return `<p>${JSON.stringify("Name: " + movie.movie.title)},<br>
-            ${JSON.stringify( "Genre: " + movie.movie.genre)},<br>
+            ${JSON.stringify("Genre: " + movie.movie.genre)},<br>
             ${JSON.stringify("Watched: " + movie.movie.watchedMovievalue)},<br>
-            ${JSON.stringify( "Release date: " +movie.movie.releaseDate)}</p>`;
+            ${JSON.stringify("Release date: " + movie.movie.releaseDate)}</p>`;
         }).join('');
 
     } catch (error) {
@@ -73,7 +73,7 @@ async function deleteMovie(id) {
         console.log(`ERROR: ${error}`);
     }
 
-} 
+}
 
 async function updateMovie(watchedMovieBox, id, watchedMovievalue) {
     console.log(watchedMovieBox);
@@ -88,7 +88,7 @@ async function updateMovie(watchedMovieBox, id, watchedMovievalue) {
 }
 async function checkIfMovieExists(title) {
     try {
-        const queryName = query(collection(db, 'movies'), where('title', '==', title));
+        const queryName = query(collection(db, 'movies'), where('title', '==', title) && ('title', '==', ""));
         const movies = await getDocs(queryName);
         console.log(queryName);
         console.log(movies);
@@ -97,4 +97,4 @@ async function checkIfMovieExists(title) {
         console.log(`ERROR: ${error}`);
     }
 }
-export { postMovie, getAllMovies, getMovie, deleteMovie, updateMovie ,checkIfMovieExists }
+export { postMovie, getAllMovies, getMovie, deleteMovie, updateMovie, checkIfMovieExists }

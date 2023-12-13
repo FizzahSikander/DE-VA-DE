@@ -14,6 +14,7 @@ function createMovieElement(movie, watchedMovievalue) {
     const headingElem = document.createElement('h3');
     const textElem = document.createElement('p');
     const dateElem = document.createElement('p');
+    const watchedElem = document.createElement('p');
     const removeButton = document.createElement('button');
     const watchedCheckbox = document.createElement('input');
     const watchedLabel = document.createElement('label');
@@ -22,19 +23,22 @@ function createMovieElement(movie, watchedMovievalue) {
     headingElem.innerText = "Name: " + movie.movie.title;
     dateElem.innerText = "Genre: " + movie.movie.genre;
     textElem.innerText = "Release Date: " + movie.movie.releaseDate;
-    removeButton.innerText = 'Ta bort';
-    updateButton.innerText = 'Uppdatera';
-    watchedLabel.innerText = 'Watched?';
+    watchedElem.innerText = "Watched?: " + movie.movie.watchedMovievalue;
+    updateButton.innerText = 'Yes';
+    removeButton.innerText = 'Delete';
+    watchedLabel.innerText = 'Have you Watched it?';
     watchedCheckbox.type = 'checkbox';
 
     containerElem.append(headingElem);
     containerElem.append(textElem);
     containerElem.append(dateElem);
-
+    containerElem.append(watchedElem);
     containerElem.append(removeButton);
+
     containerElem.append(watchedCheckbox);
     containerElem.append(watchedLabel);
     containerElem.append(updateButton);
+
     moviesElem.append(containerElem);
     removeButton.addEventListener('click', () => {
         const movieId = movie.id;
@@ -47,8 +51,8 @@ function createMovieElement(movie, watchedMovievalue) {
         console.log(watchedMovieBox);
         const movieId = movie.id;
         updateMovie(watchedMovieBox, movieId, watchedMovievalue);
-        containerElem.remove();
-        movieNotes.remove();
+       // containerElem.remove();
+        //movieNotes.remove();
         location.reload();
         alert(`Marked as Watched`);
     });
@@ -58,7 +62,6 @@ getMovieButton.addEventListener('click', async () => {
     const title = document.querySelector('#username').value;
     clearPreviousSearch();
     const movies = await getMovie(title);
-    //displayedMovies.add(title);
     document.querySelector('#username').value = "";
 
 });
@@ -100,7 +103,7 @@ postMovieButton.addEventListener('click', async () => {
         document.querySelector('#title').value = '';
         document.querySelector('#selectedDate').value = '';
     } else {
-        alert(`Movie with title '${movieTitle}' already exists in the database.`);
+        alert(`Movie can not be added in the database.`);
     }
 });
 
