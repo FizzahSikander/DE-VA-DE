@@ -1,9 +1,9 @@
-import { postMovie, getAllMovies, getMovie, deleteMovie, updateMovie,checkIfMovieExists } from "./modules/firestore.js";
+import { postMovie, getAllMovies, getMovie, deleteMovie, updateMovie, checkIfMovieExists } from "./modules/firestore.js";
 
 const postMovieButton = document.querySelector('#postMoviesButton');
 const getMovieButton = document.querySelector('#getMovieButton');
 const getAllMoviesButton = document.querySelector('#getAllMoviesButton');
-const movieNotes = document.querySelector('#movie-notes');
+export const movieNotes = document.querySelector('#movie-notes');
 const moviesElem = document.querySelector('#moviesContainer');
 
 
@@ -50,6 +50,7 @@ function createMovieElement(movie, watchedMovievalue) {
         containerElem.remove();
         movieNotes.remove();
         location.reload();
+        alert(`Marked as Watched`);
     });
 }
 
@@ -94,11 +95,12 @@ postMovieButton.addEventListener('click', async () => {
             createdAt: new Date().toLocaleDateString()
         };
         await postMovie(movie);
+        alert(`Successfully Posted`);
         document.querySelector('#usernamePost').value = '';
         document.querySelector('#title').value = '';
         document.querySelector('#selectedDate').value = '';
     } else {
-        console.log(`Movie with title '${movieTitle}' already exists in the database.`);
+        alert(`Movie with title '${movieTitle}' already exists in the database.`);
     }
 });
 

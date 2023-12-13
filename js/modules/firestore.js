@@ -4,7 +4,8 @@ import {
     where, query, deleteDoc,
     doc, updateDoc
 } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
-const movieNotes = document.querySelector('#movie-notes');
+
+import { movieNotes } from '../index.js';
 
 async function postMovie(movie) {
     try {
@@ -54,10 +55,10 @@ async function getMovie(title) {
         console.log(formatedMovies);
 
         movieNotes.innerHTML = formatedMovies.map((movie) => {
-            return `<p>${JSON.stringify("Name: " + movie.movie.title)},
-            ${JSON.stringify(movie.movie.genre)},
-            ${JSON.stringify("watched: " + movie.movie.watchedMovievalue)},
-            ${JSON.stringify(movie.movie.releaseDate)}</p>`;
+            return `<p>${JSON.stringify("Name: " + movie.movie.title)},<br>
+            ${JSON.stringify( "Genre: " + movie.movie.genre)},<br>
+            ${JSON.stringify("Watched: " + movie.movie.watchedMovievalue)},<br>
+            ${JSON.stringify( "Release date: " +movie.movie.releaseDate)}</p>`;
         }).join('');
 
     } catch (error) {
