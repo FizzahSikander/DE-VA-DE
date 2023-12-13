@@ -69,7 +69,6 @@ async function getMovie(title) {
         console.log(`ERROR: ${error}`);
     }
 }
-// console.log(await getMovie(title));
 
 async function deleteMovie(id) {
     try {
@@ -78,7 +77,9 @@ async function deleteMovie(id) {
         console.log(`ERROR: ${error}`);
     }
 
-} async function updateMovie(watchedMovieBox, id, watchedMovievalue) {
+} 
+
+async function updateMovie(watchedMovieBox, id, watchedMovievalue) {
     console.log(watchedMovieBox);
     console.log(watchedMovievalue);
     try {
@@ -120,7 +121,6 @@ function createMovieElement(movie, watchedMovievalue) {
     containerElem.append(watchedLabel);
     containerElem.append(updateButton);
     moviesElem.append(containerElem);
-
     removeButton.addEventListener('click', () => {
         const movieId = movie.id;
         deleteMovie(movieId);
@@ -129,6 +129,7 @@ function createMovieElement(movie, watchedMovievalue) {
 
     updateButton.addEventListener('click', () => {
         const watchedMovieBox = watchedCheckbox.checked;
+        console.log(watchedMovieBox);
         const movieId = movie.id;
         updateMovie(watchedMovieBox, movieId, watchedMovievalue);
         containerElem.remove();
@@ -154,7 +155,9 @@ function clearPreviousSearch() {
 }
 function displayMovies(movies) {
     for (const movie of movies) {
+        console.log(movies);
         const watchedMovievalue = movie.movie.watchedMovievalue;
+        console.log(watchedMovievalue);
         createMovieElement(movie, watchedMovievalue);
     }
 }
@@ -167,7 +170,6 @@ getAllMoviesButton.addEventListener('click', async () => {
 
 postMovieButton.addEventListener('click', async () => {
     moviesContainer.innerHTML = "";
-
     const movieTitle = document.querySelector('#usernamePost').value;
     const existingMovie = await checkIfMovieExists(movieTitle);
 
@@ -188,14 +190,14 @@ postMovieButton.addEventListener('click', async () => {
     }
 });
 
-
 async function checkIfMovieExists(title) {
     try {
         const queryName = query(collection(db, 'movies'), where('title', '==', title));
         const movies = await getDocs(queryName);
+        console.log(queryName);
+        console.log(movies);
         return !movies.empty;
     } catch (error) {
         console.log(`ERROR: ${error}`);
     }
 }
-
