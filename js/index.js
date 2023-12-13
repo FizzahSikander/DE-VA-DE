@@ -1,3 +1,4 @@
+// all buttons and elements are created in index.js
 import { postMovie, getAllMovies, getMovie, deleteMovie, updateMovie, checkIfMovieExists } from "./modules/firestore.js";
 
 const postMovieButton = document.querySelector('#postMoviesButton');
@@ -6,10 +7,10 @@ const getAllMoviesButton = document.querySelector('#getAllMoviesButton');
 export const movieNotes = document.querySelector('#movie-notes');
 const moviesElem = document.querySelector('#moviesContainer');
 
-
+//create the elements when you get all movies from database and update or remove it 
 function createMovieElement(movie, watchedMovievalue) {
-    console.log(movie);
-    console.log(watchedMovievalue);
+    // console.log(movie);
+    //console.log(watchedMovievalue);
     const containerElem = document.createElement('article');
     const headingElem = document.createElement('h3');
     const textElem = document.createElement('p');
@@ -48,16 +49,14 @@ function createMovieElement(movie, watchedMovievalue) {
 
     updateButton.addEventListener('click', () => {
         const watchedMovieBox = watchedCheckbox.checked;
-        console.log(watchedMovieBox);
+        //   console.log(watchedMovieBox);
         const movieId = movie.id;
         updateMovie(watchedMovieBox, movieId, watchedMovievalue);
-       // containerElem.remove();
-        //movieNotes.remove();
         location.reload();
         alert(`Marked as Watched`);
     });
 }
-
+// a button to search the movie with given username
 getMovieButton.addEventListener('click', async () => {
     const title = document.querySelector('#username').value;
     clearPreviousSearch();
@@ -65,25 +64,26 @@ getMovieButton.addEventListener('click', async () => {
     document.querySelector('#username').value = "";
 
 });
-
+// clear previous search when you get a movie
 function clearPreviousSearch() {
     movieNotes.innerHTML = '';
 }
+// function to itterate movies
 function displayMovies(movies) {
     for (const movie of movies) {
-        console.log(movies);
+        //  console.log(movies);
         const watchedMovievalue = movie.movie.watchedMovievalue;
         console.log(watchedMovievalue);
         createMovieElement(movie, watchedMovievalue);
     }
 }
+// button to get all movies 
 getAllMoviesButton.addEventListener('click', async () => {
-    console.log("click");
     const getmovies = await getAllMovies();
     displayMovies(getmovies);
     ;
 });
-
+// button to post movie in database
 postMovieButton.addEventListener('click', async () => {
     moviesContainer.innerHTML = "";
     const movieTitle = document.querySelector('#usernamePost').value;
@@ -103,7 +103,7 @@ postMovieButton.addEventListener('click', async () => {
         document.querySelector('#title').value = '';
         document.querySelector('#selectedDate').value = '';
     } else {
-        alert(`Movie can not be added in the database.`);
+        alert(`Movie with title '${movieTitle}' already exists in the database.`);
     }
 });
 

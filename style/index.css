@@ -3,17 +3,27 @@ body {
     margin: 0;
     padding: 0;
     background-image: url('/images/henry-co-21HT36zwLn8-unsplash.jpg');
-    /* Replace 'dvd-background.jpg' with the path to your DVD image */
     background-size: cover;
 }
+.de-va-de-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+header {
+    height: 15vh;
+    margin: 0;
+    align-content: center;
+    display: flex;
+    width: 100%;
+}
 .wrapper {
     margin: 20px auto;
     padding: 20px;
     display: flex;
     flex-direction: row;
     background-color: rgba(255, 239, 239, 0.568);
-    /* Semi-transparent white background */
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     justify-content: space-between;
     height: 400px;
@@ -71,15 +81,3 @@ button:hover {
     justify-content: space-between;
 }
 
-.de-va-de-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-header {
-    height: 15vh;
-    margin: 0;
-    align-content: center;
-    display: flex;
-    width: 100%;
-}
