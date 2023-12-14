@@ -73,7 +73,7 @@ function displayMovies(movies) {
     for (const movie of movies) {
         //  console.log(movies);
         const watchedMovievalue = movie.movie.watchedMovievalue;
-        console.log(watchedMovievalue);
+        //console.log(watchedMovievalue);
         createMovieElement(movie, watchedMovievalue);
     }
 }
